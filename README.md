@@ -2,7 +2,7 @@
 	<img width="200" src=".github/graph.png" alt="Pinpoint Logo" /> 
 </div>
 
-# DFA CLI
+# Automaton CLI
 
 CLI for executing automatons.
 
