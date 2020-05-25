@@ -1,7 +1,13 @@
-const EPSILON = 'ε';
-const SIGMA = 'Σ';
-const INTERSECT = '∩';
-const UNION = '∪';
+/*
+ * Author: Keegan Donley
+ * 
+ * Class for building, manipulating, and executing DFAs and NFAs.
+ */
+
+export const EPSILON = 'ε';
+export const SIGMA = 'Σ';
+export const INTERSECT = '∩';
+export const UNION = '∪';
 
 function sortStateOrder(state: string) {
 	if (state === ',') {

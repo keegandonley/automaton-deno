@@ -4,11 +4,18 @@
 
 # Automaton CLI
 
-CLI for executing automatons.
+CLI for executing automatons. This is a port of some of the business logic from the [Online Automaton Builder](https://automatonbuilder.com/).
 
 Designed to be run with [Deno](https://deno.land/):
-```
+```bash
 deno run index.ts "01010"
+```
+
+The DFA class can be imported into a Deno project using
+
+```js
+import DFA from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/automaton.ts';
+
 ```
 
 Future work will focus on the construction of graphs programatically or reading in from a file. For the time being, a JSON file is loaded with the following structure:
