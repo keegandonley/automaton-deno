@@ -3,6 +3,8 @@ const SIGMA = 'Σ';
 const INTERSECT = '∩';
 const UNION = '∪';
 
+import * as models from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/models.ts';
+
 
 /* eslint-disable no-loop-func */
 function sortStateOrder(state: string) {
@@ -665,53 +667,30 @@ export default class DFA {
 	}
 }
 
-const data = {
-	"dfa": {
-		"A": {
-			"edges": [
-				{
-					"target": "B",
-					"input": "1"
-				},
-				{
-					"target": "C",
-					"input": "0"
-				}
-			],
-			"accepting": false
-		},
-		"B": {
-			"edges": [
-				{
-					"target": "A",
-					"input": "0"
-				},
-				{
-					"target": "C",
-					"input": "1"
-				}
-			],
-			"accepting": false
-		},
-		"C": {
-			"edges": [
-				{
-					"target": "B",
-					"input": "0"
-				},
-				{
-					"target": "A",
-					"input": "1"
-				}
-			],
-			"accepting": true
-		}
-	},
-	"start": "A"
-};
+const automaton = new DFA(models.simple);
 
-const automaton = new DFA(data);
+let input = '';
 
-const result = automaton.process('010');
+const { args } = Deno;
 
-console.log(result);
+if (args.length > 0 && typeof args[0] === 'string') {
+	input = args[0]
+}
+
+const { path, accepted} = automaton.process(input);
+
+if (accepted) {
+	console.log('🎉 Your input was accepted!');
+} else {
+	console.log('👻 Your input was rejected');
+}
+
+if (accepted && path) {
+	console.log('\n--------------------------------------------------');
+	console.log(path.length, 'steps to acceptance:');
+	let pathStr = '';
+	path.forEach((step: string, index: number) => {
+		pathStr = `${pathStr}${step}${index < path.length - 1 ? ' ---> ' : ''}`;
+	});
+	console.log(pathStr);
+}

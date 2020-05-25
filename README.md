@@ -8,7 +8,7 @@ CLI for executing automatons.
 
 Designed to be run with [Deno](https://deno.land/):
 ```
-deno run index.ts
+deno run index.ts "01010"
 ```
 
 Future work will focus on the construction of graphs programatically or reading in from a file. For the time being, a JSON file is loaded with the following structure:
