@@ -4,8 +4,8 @@
  * CLI for interacting with the DFA class
  */
 
-import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/models.ts';
-import DFA, { IDFA } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/automaton.ts';
+import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.1/models.ts';
+import DFA, { IDFAInput } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.1/automaton.ts';
 
 
 let inputString = '';
@@ -14,10 +14,7 @@ let prebuiltGraphName = 'simple'
 const { args } = Deno;
 
 const models = modelMap as any as {
-  [name: string]: {
-    dfa: IDFA;
-    start: string;
-  };
+  [name: string]: IDFAInput;
 };
 
 if (args.length > 0) {
