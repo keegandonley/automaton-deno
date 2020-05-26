@@ -4,8 +4,8 @@
  * CLI for interacting with the DFA class
  */
 
-import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.1/models.ts';
-import DFA, { IDFAInput } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.1/automaton.ts';
+import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/models.ts';
+import DFA, { IDFAInput } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/automaton.ts';
 
 
 let inputString = '';
