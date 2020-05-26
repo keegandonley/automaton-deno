@@ -4,20 +4,36 @@
  * CLI for interacting with the DFA class
  */
 
-import * as models from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/models.ts';
-import DFA from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/automaton.ts';
+import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/models.ts';
+import DFA, { IDFA } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/master/automaton.ts';
 
-const automaton = new DFA(models.simple);
 
-let input = '';
+let inputString = '';
+let prebuiltGraphName = 'simple'
 
 const { args } = Deno;
 
-if (args.length > 0 && typeof args[0] === 'string') {
-	input = args[0]
+const models = modelMap as any as {
+  [name: string]: {
+    dfa: IDFA;
+    start: string;
+  };
+};
+
+if (args.length > 0) {
+	if (args.length === 1 && typeof args[0] === 'string') {
+		inputString = args[0]
+	} else if (args.length === 2 && typeof args[0] === 'string' && typeof args[1] === 'string') {
+		inputString = args[1]
+		if (Object.keys(models).includes(args[0])) {
+			prebuiltGraphName = args[0];
+		}
+	}	
 }
 
-const { path, accepted} = automaton.process(input);
+const automaton = new DFA(models[prebuiltGraphName]);
+
+const { path, accepted} = automaton.process(inputString);
 
 if (accepted) {
 	console.log('🎉 Your input was accepted!');

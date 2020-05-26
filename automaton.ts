@@ -33,6 +33,11 @@ export interface IDFA {
 	}
 }
 
+export interface IDFAInput {
+	dfa: IDFA;
+	start: string;
+}
+
 export default class DFA {
 	_inputIdx: number;
 	_inputString: string;
