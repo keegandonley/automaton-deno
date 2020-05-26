@@ -1,4 +1,7 @@
 run:
+	deno run index.ts interactive
+
+simple:
 	deno run index.ts simple 01010
 
 test:

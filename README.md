@@ -67,6 +67,15 @@ Future work will focus on the construction of graphs programatically or reading 
 }
 ```
 
+## Interactive Mode
+Build an automaton node by node and test strings against it
+
+```
+make run
+```
+
+
+## Class Methods
 Processing the input string:
 
 ```typescript
