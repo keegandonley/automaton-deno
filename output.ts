@@ -13,6 +13,7 @@ export default class Output {
 		if (!this.silent) {
 			console.log(message);
 		}
+		return message;
 	}
 }
 
@@ -23,18 +24,18 @@ export class AutomatonOutput extends Output {
 	}
 
 	public success = () => {
-		this.print(`${this.emojis.success} Your input was accepted!`);
+		return this.print(`${this.emojis.success} Your input was accepted!`);
 	}
 
 	public failure = () => {
-		this.print(`${this.emojis.failure} Your input was rejected`);
+		return this.print(`${this.emojis.failure} Your input was rejected`);
 	}
 
 	public printResult = (success?: boolean) => {
 		if (success) {
-			this.success();
+			return this.success();
 		} else {
-			this.failure();
+			return this.failure();
 		}
 	}
 }

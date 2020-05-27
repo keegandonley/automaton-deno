@@ -6,3 +6,4 @@ simple:
 
 test:
 	deno test automaton.test.ts
+	deno test output.test.ts
