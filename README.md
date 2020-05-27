@@ -1,5 +1,5 @@
 <div align="center">
-	<img width="200" src=".github/graph.png" alt="Pinpoint Logo" /> 
+	<img width="200" src=".github/graph.png" alt="Graph Logo" /> 
 </div>
 
 # Automaton CLI
