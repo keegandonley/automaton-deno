@@ -3,6 +3,7 @@
 </div>
 
 # Automaton CLI
+![Tests](https://github.com/keegandonley/automaton-deno/workflows/Tests/badge.svg)
 
 CLI for executing automatons. This is a port of some of the business logic from the [Online Automaton Builder](https://automatonbuilder.com/).
 
