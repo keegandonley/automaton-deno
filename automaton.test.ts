@@ -1,6 +1,6 @@
 import * as modelMap from './models.ts';
 import DFA, {
-  EPSILON,
+  EPSILON, IDFAInput,
 } from './automaton.ts';
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts';
 
@@ -59,4 +59,12 @@ Deno.test(`Should execute an ${EPSILON}-free NFA with rejected input`, () => {
   const { path, accepted } = graph.process("0102");
   assertEquals(accepted, false);
   assertEquals(path, ["edcba", "edb", "ec", undefined]);
+});
+
+Deno.test(`Should successfully load all ${Object.keys(modelMap).length} test cases`, () => {
+	Object.keys(modelMap).forEach((model: string) => {
+		const structure = (modelMap as { [s: string]: IDFAInput })[model] as IDFAInput;
+		const graph = new DFA(structure);
+		assertEquals(graph.getStructure(), structure);
+	});
 });

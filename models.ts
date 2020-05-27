@@ -1,4 +1,6 @@
-export const simple = {
+import { IDFAInput } from "./automaton.ts";
+
+export const simple: IDFAInput = {
 	"dfa": {
 		"A": {
 			"edges": [
@@ -43,7 +45,7 @@ export const simple = {
 	"start": "A"
 };
 
-export const epsilon = {
+export const epsilon: IDFAInput = {
   "dfa": {
     "x": {
       "edges": [
@@ -84,7 +86,7 @@ export const epsilon = {
   "start": "x"
 };
 
-export const epsilonFree = {
+export const epsilonFree: IDFAInput = {
   "dfa": {
     "a": {
       "edges": [
@@ -150,7 +152,7 @@ export const epsilonFree = {
   "start": "a"
 }
 
-export const large = {
+export const large: IDFAInput = {
   "dfa": {
     "S": {
       "edges": [
