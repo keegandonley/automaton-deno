@@ -671,4 +671,16 @@ export default class DFA {
 		});
 		return this;
 	}
+
+	printPath = (path?: string[]) => {
+		if (path) {
+			console.log("\n--------------------------------------------------");
+			console.log(path.length, "steps to acceptance:");
+			let pathStr = "";
+			path.forEach((step: string, index: number) => {
+			pathStr = `${pathStr}${step}${index < path.length - 1 ? " ---> " : ""}`;
+			});
+			console.log(pathStr);
+		}
+	}
 }

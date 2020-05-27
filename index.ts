@@ -6,6 +6,7 @@
 
 import * as modelMap from './models.ts';
 import DFA, { IDFAInput, EPSILON } from './automaton.ts';
+import { AutomatonOutput } from './output.ts';
 import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/0.0.6/index.ts';
 
 
@@ -33,6 +34,7 @@ if (args.length > 0) {
 if (args[0] === 'interactive') {
 	const input = new InputLoop();
 	const automaton = new DFA();
+	const output = new AutomatonOutput();
 
 	const mainQuestions = ["Add a node", "Add an edge", "Set starting node", "Evaluate a string", "Quit"];
 	while (!input.done) {
@@ -61,13 +63,11 @@ if (args[0] === 'interactive') {
 		} else if (result[3]) {
 			const inputString = await input.question('Input to test:');
 			const { accepted, path } = automaton.process(inputString);
-
+			output.printResult(accepted);
 			if (accepted) {
-				console.log("🎉 Your input was accepted!");
-			} else {
-				console.log("👻 Your input was rejected");
+				automaton.printPath(path);
 			}
-			console.log(path);
+			
 		} else if (result[mainQuestions.length - 1]) {
 			input.close();
 		}
@@ -83,13 +83,7 @@ if (args[0] === 'interactive') {
 		console.log("👻 Your input was rejected");
 	}
 
-	if (accepted && path) {
-		console.log("\n--------------------------------------------------");
-		console.log(path.length, "steps to acceptance:");
-		let pathStr = "";
-		path.forEach((step: string, index: number) => {
-			pathStr = `${pathStr}${step}${index < path.length - 1 ? " ---> " : ""}`;
-		});
-		console.log(pathStr);
+	if (accepted) {
+		automaton.printPath(path);
 	}
 }
