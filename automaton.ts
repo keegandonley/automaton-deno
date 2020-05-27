@@ -4,10 +4,9 @@
  * Class for building, manipulating, and executing DFAs and NFAs.
  */
 
-export const EPSILON = 'ε';
-export const SIGMA = 'Σ';
-export const INTERSECT = '∩';
-export const UNION = '∪';
+import { EPSILON } from './symbols.ts';
+
+export * from './symbols.ts';
 
 function sortStateOrder(state: string) {
 	if (state === ',') {

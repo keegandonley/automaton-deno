@@ -1,7 +1,7 @@
-import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/models.ts';
+import * as modelMap from './models.ts';
 import DFA, {
   EPSILON,
-} from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/automaton.ts';
+} from './automaton.ts';
 import { assertEquals } from 'https://deno.land/std/testing/asserts.ts';
 
 Deno.test("Should load a simple DF", () => {
