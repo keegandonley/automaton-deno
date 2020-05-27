@@ -6,7 +6,7 @@
 
 import * as modelMap from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/models.ts';
 import DFA, { IDFAInput, EPSILON } from 'https://raw.githubusercontent.com/keegandonley/automaton-deno/0.0.2/automaton.ts';
-import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/0.0.4/index.ts';
+import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/0.0.6/index.ts';
 
 
 let inputString = '';
