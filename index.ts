@@ -7,7 +7,7 @@
 import * as modelMap from './models.ts';
 import DFA, { IDFAInput, EPSILON } from './automaton.ts';
 import { AutomatonOutput } from './output.ts';
-import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/0.0.6/index.ts';
+import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/1.0.0/index.ts';
 
 
 let inputString = '';
@@ -38,7 +38,7 @@ if (args[0] === 'interactive') {
 
 	const mainQuestions = ["Add a node", "Add an edge", "Set starting node", "Evaluate a string", "Quit"];
 	while (!input.done) {
-		const result = await input.choose(mainQuestions);
+		const result = await input.choose(mainQuestions, true);
 
 		if (result[0]) {
 			const nodeName = await input.question('Enter the label for the node:');
@@ -68,8 +68,6 @@ if (args[0] === 'interactive') {
 				automaton.printPath(path);
 			}
 			
-		} else if (result[mainQuestions.length - 1]) {
-			input.close();
 		}
 	}
 } else {
