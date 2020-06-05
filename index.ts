@@ -7,7 +7,7 @@
 import * as modelMap from './models.ts';
 import DFA, { IDFAInput, EPSILON } from './automaton.ts';
 import { AutomatonOutput } from './output.ts';
-import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/master/index.ts';
+import InputLoop from 'https://raw.githubusercontent.com/keegandonley/deno-input/1.0.3/index.ts';
 
 
 let inputString = '';
@@ -41,27 +41,27 @@ if (args[0] === 'interactive') {
 		const result = await input.choose(mainQuestions, true);
 
 		if (result[0]) {
-			const nodeName = await input.question('Enter the label for the node:');
+			const nodeName = await input.question('Enter the label for the node: ', false);
 			const accepting = await input.choose(["Accepting node", "Non-accepting node"]);
 
 			automaton.addNode(nodeName, accepting[0]);
 			console.log(automaton.getStructure())
 		} else if (result[1]) {
-			const nodeA = await input.question('Enter the source node:');
-			const nodeB = await input.question('Enter the target node:');
+			const nodeA = await input.question('Enter the source node: ', false);
+			const nodeB = await input.question('Enter the target node: ', false);
 			const edgeType = await input.choose(["Labeled edge", `${EPSILON} edge`]);
 
 			if (edgeType[0]) {
-				const edgeLabel = await input.question('Enter the edge label:');
+				const edgeLabel = await input.question('Enter the edge label:', false);
 				automaton.addEdge(nodeA, nodeB, edgeLabel);
 			} else {
 				automaton.addEdge(nodeA, nodeB, EPSILON);
 			}
 		} else if (result[2]) {
-			const startingNode = await input.question('Enter the starting node:');
+			const startingNode = await input.question('Enter the starting node: ', false);
 			automaton.start(startingNode);
 		} else if (result[3]) {
-			const inputString = await input.question('Input to test:');
+			const inputString = await input.question('Input to test: ', false);
 			const { accepted, path } = automaton.process(inputString);
 			output.printResult(accepted);
 			if (accepted) {
